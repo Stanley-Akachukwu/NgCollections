@@ -1,0 +1,71 @@
+﻿
+@model NgCollections.Domain.Entities.Product
+
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="product-slick">
+
+                        <div class="img-wrapper">
+                            <div class="back">
+                                <div><img src="~/Uploads/@Model.FrontImageUrl" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="product-slick">
+
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <div><img src="~/Uploads/@Model.BackImageUrl" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 rtl-text">
+                    <div class="product-right">
+                        <h2>@Model.Name</h2>
+                        <h4><del>₦@Model.Price</del><span>15% off</span></h4>
+                        <h3>(***.**)</h3>
+                        <ul class="color-variant">
+                            <li class="bg-light0"></li>
+                            <li class="bg-light1"></li>
+                            <li class="bg-light2"></li>
+                        </ul>
+                        <div class="product-description border-product">
+                            <h6 class="product-title size-text">selected size: @Model.ProductNumberSize</h6>
+                            <h6 class="product-title">quantity</h6>
+                            <div class="qty-box">
+                                <div class="input-group">
+                                    <span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
+                                    <input type="text" name="quantity" class="form-control input-number" value="1"> <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-buttons">
+                            @using (Html.BeginForm("AddToCart", "Cart"))
+                            {
+                                <div class="pull-right">
+                                    @Html.HiddenFor(x => x.ProductID)
+                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                    <input type="submit" class="btn btn-success solid" value="Buy now" />
+                                </div>
+                            }
+                           
+                        </div>
+                        <div class="p-2">
+                            <p> @Model.Description</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->

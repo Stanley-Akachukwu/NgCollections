@@ -1,0 +1,103 @@
+﻿<!-- breadcrumb start-->
+@model NgCollections.WebUI.Models.BlogVM
+@{
+    ViewBag.Title = "Blog Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>blog details</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.html">blog</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">blog deatils</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb end-->
+<!--section start-->
+<section class="blog-detail-page section-b-space ratio2_3">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 blog-detail">
+                <img   width="600" height="600" src="~/Uploads/Blogs/@Model.ImageUrl" class=" img-thumbnail img-fluid blur-up lazyload" alt="">
+                <h3>@Model.Title</h3> 
+                <ul class="post-social">
+                    <li>@Model.EntryDate</li>
+                    <li>Posted By : @Model.Author</li>
+                    <li><i class="fa fa-heart"></i> @{int h = Model.Popularity * Model.Id; } @h Hits</li>
+                    <li><i class="fa fa-comments"></i> @Model.Popularity</li>
+                </ul>
+                <p style="text-align: center;">@Model.Content.</p>
+            </div>
+        </div>
+
+        <div class="row section-b-space">
+            <div class="col-sm-12">
+                <ul class="comment-section">
+                    @foreach (var comment in Model.GetComments)
+                    {
+                        <li>
+                            <div class="media">
+                                <img src="assets/images/avtar.jpg" alt="Generic placeholder image">
+                                <div class="media-body">
+                                    <h6>@comment.Author <span>( @Model.EntryDate.ToString("dddd, dd MMMM yyyy") )</span></h6>
+                                    <p>@comment.Content</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="row blog-contact">
+            <div class="col-sm-12">
+                <h2>Leave Your Comment</h2>
+                @using (Html.BeginForm("AddBlogComment", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <form class="theme-form">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="Name" name="name" placeholder="Enter Your name" required="">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="comment">Comment</label>
+                                <textarea class="form-control" placeholder="Write Your Comment" id="comment" name="Comment" rows="6"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control"  name="parentId" value="@Model.Id" style="display:none">
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-solid" type="submit">Post Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->
+<!-- footer start -->
+<footer class="footer-light">
+    
+</footer>
+<!-- footer end -->

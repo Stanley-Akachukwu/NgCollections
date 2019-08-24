@@ -1,0 +1,16 @@
+﻿Login name: ngcollection
+password:Cherih25ngc
+Hosting Account ID:ngcollection-001
+
+ CREATE TABLE [dbo].[Products] (
+    [ProductID]         INT             IDENTITY (1, 1) NOT NULL,
+    [Name]              NVARCHAR (100)  NOT NULL,
+    [CategoryId]        INT             NOT NULL,
+    [Description]       NVARCHAR (300)  NOT NULL,
+    [Price]             DECIMAL (18, 2) NOT NULL,
+    [ProductNumberSize] INT             NULL,
+    [FrontImageUrl]     NVARCHAR (100)  NOT NULL,
+    [BackImageUrl]      NVARCHAR (100)  NOT NULL,
+    [AvailableSizes]    NVARCHAR (100)  NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED ([ProductID] ASC)
+);

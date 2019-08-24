@@ -1,0 +1,82 @@
+﻿
+
+
+@model NgCollections.WebUI.Models.BlogVM
+@{
+    ViewBag.BlogTitle = "Admin: Edit " + @Model.Title;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="panel" style="padding-top:50px">
+    <div class="panel-heading">
+        @if (Model.Title != null)
+        {
+            <h3><strong>Edit @Model.Title</strong></h3>
+        }
+        else
+        { <h3><strong>Create new blog</strong></h3>}
+    </div>
+    <hr />
+    @using (Html.BeginForm("Create", "Blog",
+FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.Id)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                switch (property.PropertyName)
+                {
+                    case "Id":
+                    case "ImageUrl":
+                    case "EntryDate":
+                    case "BlogId":
+                    case "IsBlogComment":
+                    case "GetComments":
+                    case "NumberOfComments":
+
+
+                        break;
+                    default:
+                        <div class="form-group">
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @if (property.PropertyName == "Content")
+                            {
+                                @Html.TextArea(property.PropertyName, null,
+                                new { @class = "form-control", rows = 4 })
+                            }
+                            else
+                            {
+                                @Html.TextBox(property.PropertyName, null,
+                new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessage(property.PropertyName)
+                        </div>
+                        break;
+                }
+            }
+
+            <div class="form-group">
+
+                @if (Model.ImageUrl == null)
+                {
+                    <div class="form-control-static">No Image</div>
+                    <div class="form-group">
+                        <input type="file" name="file" multiple="multiple" required />
+                    </div>
+                }
+                else
+                {
+                    <img class="img-thumbnail" width="150" height="150"
+                         src="~/Uploads/@Model.ImageUrl" />
+                }
+            </div>
+
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Save" class="btn btn-primary pull-left" />
+            @Html.ActionLink("Cancel and return to List", "List", null, new
+       {
+           @class = "btn btn-danger pull-right"
+       })
+        </div>
+    }
+</div>

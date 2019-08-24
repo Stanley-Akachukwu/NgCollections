@@ -1,0 +1,35 @@
+﻿@model NgCollections.WebUI.Models.ProductListViewModel
+@using NgCollections.Domain.Entities
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_productDetailsLayout.cshtml";
+    int current = (int)ViewBag.navId;
+    int previous = current - 1;
+    int next = current + 1;
+    Product lastproduct = ViewBag.lastProduct;
+}
+@Html.Partial("~/Views/Product/_productSummary.cshtml", Model.Product)
+
+<hr />
+<section class="section-b-space pt-0 ratio_asos">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-2">
+            @if (previous > 0)
+            {
+                @Html.ActionLink("Previous", "List", "Product", new { id = previous }, new { @class = "btn btn-solid" })
+            }
+        </div>
+       
+        <div class="col-md-2">
+            @if (lastproduct == null)
+            {
+                @Html.ActionLink("Next", "List", "Product", new { id = next }, new { @class = "btn btn-solid" })
+            }
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    </section>
+ 

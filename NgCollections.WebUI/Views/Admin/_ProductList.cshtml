@@ -1,0 +1,108 @@
+﻿@model NgCollections.WebUI.Models.AdminProductListViewModel
+@using NgCollections.Domain.Entities
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int previous = 0;
+    int next = 1;
+    Product lastofList = ViewBag.lastofList;
+    Product LastofDb = ViewBag.LastofDb;
+    Product firstofDb = ViewBag.firstofDb;
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>All Products</h3>
+                (Total Number of products: @Model.ProductCount)
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("List", "Admin"))
+                {
+                    <div class="row">
+                        <div class="col-md-3">
+                            @Html.TextBox("searchId", null, new { @class = "form-control", placeholder = "search number", type = "text" })
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit"
+                                   class="btn btn-primary btn-xs"
+                                   value="Search" />
+                        </div>
+                    </div>
+
+                }
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Add a new product", "Create", null, new { @class = "btn btn-default" })
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="panel-body">
+
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">ID</th>
+                <th>Name</th>
+                <th class="text-center">Front</th>
+                <th class="text-center">Back</th>
+                <th class="text-right">Price</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td class="text-right">@item.ProductID</td>
+                    <td>@Html.ActionLink(item.Name, "Edit", new { item.ProductID })</td>
+                    <td class="text-center">
+                        <img class="img-thumbnail" width="100" height="100"
+                             src="~/Uploads/@item.FrontImageUrl" />
+                    </td>
+                    <td class="text-center">
+                        <img class="img-thumbnail" width="100" height="100"
+                             src="~/Uploads/@item.FrontImageUrl" />
+                    </td>
+                    <td class="text-right">₦@item.Price</td>
+                    <td class="text-center">
+                        @using (Html.BeginForm("Delete", "Admin"))
+                        {
+                            @Html.Hidden("ProductID", item.ProductID)
+                            <input type="submit"
+                                   class="btn btn-default btn-xs"
+                                   value="Delete" />
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+    <hr />
+    <div class="panel-footer">
+        <div class="row cart-buttons text-center">
+            <div class="col-4"> </div>
+            <div class="col-2">
+                @if (lastofList.ProductID > 5)
+                {
+                    @Html.ActionLink("Previous", "List", "Admin", new { id = previous }, new { @class = "btn btn-solid" })
+                }
+                
+            </div>
+            <div class="col-1">
+                @if (LastofDb != lastofList)
+                {
+
+                    @Html.ActionLink("Next", "List", "Admin", new { id = next }, new { @class = "btn btn-solid" })
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

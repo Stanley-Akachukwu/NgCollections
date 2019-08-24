@@ -1,0 +1,22 @@
+﻿@model NgCollections.Domain.Entities.Blog
+<div class="col-md-12">
+
+    <a href="#">
+        <div class="classic-effect">
+            <div>
+                <img src="~/Uploads/Blogs/@Model.ImageUrl" class="img-thumbnail img-fluid blur-up lazyload bg-img" alt="">
+            </div>
+            <span></span>
+        </div>
+    </a>
+    <div class="blog-details">
+        <h4>@Model.EntryDate.ToString("dddd, dd MMMM yyyy")</h4>
+        <a href="~/Blog/BlogDetails/@Model.Id">
+            <p>@Model.Title,</p>
+        </a>
+        <hr class="style1">
+        <h6>
+            by: @Model.Author , @Model.NumberOfComments
+        </h6>
+    </div>
+</div>

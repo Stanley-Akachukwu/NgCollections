@@ -1,0 +1,71 @@
+﻿
+
+@model NgCollections.WebUI.Models.ProductVM
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="panel" style="padding-top:50px">
+    <div class="panel-heading">
+        <h3><strong>Create new product</strong></h3>
+    </div>
+    <hr />
+    @using (Html.BeginForm("Create", "Admin", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ProductID)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                switch (property.PropertyName)
+                {
+                    case "ProductID":
+                    case "Categories":
+                    case "ProductNumberSizes":
+                    case "FrontImageUrl":
+                    case "BackImageUrl":
+                    case "NavId":
+
+                        break;
+                    default:
+                        <div class="form-group">
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @if (property.PropertyName == "Description")
+                            {
+                                @Html.TextArea(property.PropertyName, null,
+                                new { @class = "form-control", rows = 2, @readonly = "readonly" })
+                            }
+                            else if (property.PropertyName == "CategoryId")
+                            {
+                                @Html.DropDownList("CategoryId", Model.Categories, "---Choose category---",
+                               new { @class = "form-control text-success", required = "required",  @readonly= "readonly" })
+                            }
+
+
+                            else if (property.PropertyName == "ProductNumberSize")
+                            {
+                                @Html.DropDownList("ProductNumberSize", Model.ProductNumberSizes, "---Choose numeric size---",
+                               new { @class = "form-control text-success", required = "required",@readonly = "readonly" })
+                            }
+                            else
+                            {
+                                @Html.TextBox(property.PropertyName, null,
+                new { @class = "form-control", @readonly = "readonly" })
+                            }
+                            @Html.ValidationMessage(property.PropertyName)
+                        </div>
+                        break;
+                }
+            }
+            <div class="form-group">
+                <input type="file" name="file" multiple="multiple" required />
+            </div>
+            
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Save" class="btn btn-primary pull-left" />
+            @Html.ActionLink("Cancel and return to List", "List", "Admin", null, new { @class = "btn btn-danger pull-right" })
+        </div>
+    }
+</div>
+ 

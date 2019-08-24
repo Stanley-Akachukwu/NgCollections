@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<NgCollections.Domain.Entities.Order>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>All Orders</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-center">ID</th>
+                <th>Product</th>
+                <th class="text-center">Amount</th>
+                <th class="text-center">Customer Name</th>
+                <th class="text-center">Customer Email</th>
+                <th class="text-center">Customer Phone</th>
+                <th class="text-center">Order Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="text-right">@item.OrderID</td>
+                <td>@Html.ActionLink(item.ProductName, "OrderDetails", new { item.OrderID })</td>
+                <td class="text-center">₦@item.Amount</td>
+                <td class="text-center">@item.CustomerName</td>
+                <td class="text-center">@item.CustomerEmail</td>
+                <td class="text-center">@item.CustomerPhoneNumber</td>
+                <td class="text-center">@item.OrderDate.ToString("dddd, dd MMMM yyyy")</td>
+                <td class="text-center">
+                    @using (Html.BeginForm("DeleteOrder", "Admin"))
+                    {
+                        @Html.Hidden("OrderID", item.OrderID)
+                        <input type="submit"
+                               class="btn btn-default btn-xs"
+                               value="Delete" />
+                    }
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        <div class="pull-right text-success fa-bold">
+            @{
+                int orderCount = (int)Session["orderCount"];
+            }
+            Total Number of orders: @orderCount
+        </div>
+    </div>
+</div>

@@ -1,0 +1,632 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@ViewBag.Title - Ng-Collections</title>
+
+    <meta name="description" content="Strictly Turkey products">
+    <meta name="keywords" content="Strictly Turkey products">
+    <meta name="author" content="Chinedu">
+    <link rel="icon" href="~/Content/images/favicon/1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/images/favicon/1.png" type="image/x-icon">
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/fontawesome.css">
+
+    <!--Slick slider css-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/slick-theme.css">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/animate.css">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/themify-icons.css">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.css">
+
+    <!-- Theme css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/color1.css" media="screen" id="color">
+
+    <link href="~/Content/css/ErrorStyles.css" rel="stylesheet" />
+    <script src="~/Scripts/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+    <!-- header start -->
+    <header>
+        <div class="mobile-fix-option"></div>
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="header-contact">
+                            <ul>
+                                <li>Welcome to Ng-Collections</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 08174731364, 08033208157</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <ul class="header-dropdown">
+                            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+                            <li class="onhover-dropdown mobile-account">
+                                <i class="fa fa-user" aria-hidden="true"></i> My Account
+                                <ul class="onhover-show-div">
+                                    <li><a href="~/Account/Login" data-lng="en">Login</a></li>
+                                    <li><a href="~/Account/Logout" data-lng="es">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="main-menu">
+                        <div class="menu-left">
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()">
+                                    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
+                                </a>
+                                <div id="mySidenav" class="sidenav">
+                                    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+                                    <nav>
+                                        <div onclick="closeNav()">
+                                            <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2" aria-hidden="true"></i> Back</div>
+                                        </div>
+
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="brand-logo">
+                                <a href="~/Home/Index"><img src="~/Content/images/icon/logo/logo.png" class="img-fluid blur-up lazyload" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="menu-right pull-right">
+                            <div>
+                                <nav id="main-nav">
+                                    <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                    <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                        <li>
+                                            <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
+                                        </li>
+                                        <li>
+                                            <a href="#">Home</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#">Men</a>
+                                            <ul>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Women</a>
+                                            <ul>
+                                                <li><a href="~/Product/List?categoryId=1">Short gown</a></li>
+                                                <li><a href="~/Product/List?categoryId=2">Women Long gown</a></li>
+                                                <li><a href="~/Product/List?categoryId=3">Women Skirt & blouse</a></li>
+                                                <li><a href="~/Product/List?categoryId=4">Women Trousers</a></li>
+                                                <li><a href="~/Product/List?categoryId=5">Women Tops</a></li>
+                                                <li><a href="~/Product/List?categoryId=6">Women Packet shirts</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li>
+                                            <a href="~/Blog/Blogs">blog</a>
+
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div>
+                                <div class="icon-nav">
+                                    <ul>
+                                        <li class="onhover-div mobile-search">
+                                            <div><img src="~/Content/images/icon/search.png" onclick="openSearch()" class="img-fluid blur-up lazyload" alt=""> <i class="ti-search" onclick="openSearch()"></i></div>
+                                            <div id="search-overlay" class="search-overlay">
+                                                <div>
+                                                    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                                                    <div class="overlay-content">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <form>
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Search a Product">
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header end -->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+
+
+    <!-- footer -->
+    <footer class="footer-light">
+        <div class="light-layout">
+            <div class="container">
+                <section class="small-section border-section border-top-0">
+                    <div class="row">
+                        <div>
+                            <h2>Would you like to browse one at a time?</h2>
+                            <p><h3>This would actually make you view each product properly.</h3></p>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>Browse Categories</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-condensed table-bordered">
+                                    <tr>
+                                        <th class="text-right">ID</th>
+                                        <th>Name</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">1.</td>
+                                        <td>Women Short gown</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 1 }, new { @class = "btn btn-solid btn-xs" })
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-right">2.</td>
+                                        <td>Women Long gown</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 2 }, new { @class = "btn btn-solid btn-xs" })
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-right">3.</td>
+                                        <td>Women Skirt & blouse</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 3 }, new { @class = "btn btn-solid btn-xs" })
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-right">4.</td>
+                                        <td>Women Trousers</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 4 }, new { @class = "btn btn-solid btn-xs" })
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-right">5.</td>
+                                        <td>Women Tops</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 5 }, new { @class = "btn btn-solid btn-xs" })
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-right">6.</td>
+                                        <td>Women Packet shirts</td>
+                                        <td class="text-center">
+                                            @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 6 }, new { @class = "btn btn-solid btn-xs" })
+
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <section class="section-b-space light-layout">
+            <div class="container">
+                <div class="row footer-theme partition-f">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-title footer-mobile-title">
+                            <h4>about</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <div class="footer-logo"><img src="~/Content/images/icon/logo.png" alt=""></div>
+                            <p>We have men & women wears for corporate, outing, parties, church and other dressing purposes. We sell Turkey wear for our customers' optimal satisfaction.</p>
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col offset-xl-1">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>my account</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul>
+                                    <li><a href="#">mens</a></li>
+                                    <li><a href="#">womens</a></li>
+                                    <li><a href="#">clothing</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="sub-title">
+                            <div class="footer-title">
+                                <h4>store information</h4>
+                            </div>
+                            <div class="footer-contant">
+                                <ul class="contact-list">
+                                    <li><i class="fa fa-map-marker"></i>Ng-Collection</li>
+                                    <li><i class="fa fa-phone"></i>Call Us: 08174731364, 08033208157</li>
+                                    <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#">denmarkstan@gmail.com</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6 col-sm-12">
+                        <div class="footer-end">
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2019 NgCollection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+    <!--modal popup start-->
+    @*<div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">*@
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body modal1">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="modal-bg">
+                                        <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <div class="offer-content">
+                                            @*<img src="~/Content/images/Offer-banner.png" class="img-fluid blur-up lazyload" alt="">*@
+                                            <div>
+                                                <h2>Would you like to browse product at a time?</h2>
+                                                <p><h3>This would actually help you view each product properly.</h3></p>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3>Browse Categories </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped table-condensed table-bordered">
+                                                        <tr>
+                                                            <th class="text-right">ID</th>
+                                                            <th>Name</th>
+                                                            <th class="text-center">Actions</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="text-right">1.</td>
+                                                            <td>Women Short gown</td>
+                                                            <td class="text-center">
+                                                                @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 1 }, new { @class = "btn btn-solid btn-xs" })
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="text-right">2.</td>
+                                                            <td>Women Long gown</td>
+                                                            <td class="text-center">
+                                                                @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 2 }, new { @class = "btn btn-solid btn-xs" })
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="text-right">3.</td>
+                                                            <td>Women Skirt & blouse</td>
+                                                            <td class="text-center">
+                                                                @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 3 }, new { @class = "btn btn-solid btn-xs" })
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="text-right">4.</td>
+                                                            <td>Women Trousers</td>
+                                                            <td class="text-center">
+                                                                @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 4 }, new { @class = "btn btn-solid btn-xs" })
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="text-right">5.</td>
+                                                            <td>Women Tops</td>
+                                                            <td class="text-center">
+                                                                @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 5 }, new { @class = "btn btn-solid btn-xs" })
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="text-right">6.</td>
+                                                            <td>Women Packet shirts</td>
+                                                            <td class="text-center">
+                                                                @Html.ActionLink("Browse", "List", "Product", new { page = 1, categoryId = 6 }, new { @class = "btn btn-solid btn-xs" })
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--modal popup end-->
+        <!-- Quick-view modal popup start-->
+        <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content quick-view-modal">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-12">
+                                <div class="quick-view-img"><img src="~/Content/images/pro3/1.jpg" alt="" class="img-fluid blur-up lazyload"></div>
+                            </div>
+                            <div class="col-lg-6 rtl-text">
+                                <div class="product-right">
+                                    <h2>Women Pink Shirt</h2>
+                                    <h3>₦3200.96</h3>
+                                    <ul class="color-variant">
+                                        <li class="bg-light0"></li>
+                                        <li class="bg-light1"></li>
+                                        <li class="bg-light2"></li>
+                                    </ul>
+                                    <div class="border-product">
+                                        <h6 class="product-title">product details</h6>
+                                        <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                                    </div>
+                                    <div class="product-description border-product">
+                                        <div class="size-box">
+                                            <ul>
+                                                <li class="active"><a href="#">s</a></li>
+                                                <li><a href="#">m</a></li>
+                                                <li><a href="#">l</a></li>
+                                                <li><a href="#">xl</a></li>
+                                            </ul>
+                                        </div>
+                                        <h6 class="product-title">quantity</h6>
+                                        <div class="qty-box">
+                                            <div class="input-group">
+                                                <span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
+                                                <input type="text" name="quantity" class="form-control input-number" value="1"> <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-buttons"><a href="#" class="btn btn-solid">add to cart</a> <a href="#" class="btn btn-solid">view detail</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Quick-view modal popup end-->
+        <!-- theme setting -->
+        <a href="javascript:void(0)" onclick="openSetting()">
+            <div class="setting-sidebar" id="setting-icon">
+                <div>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </div>
+            </div>
+        </a>
+        <div id="setting_box" class="setting-box">
+            <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+            <div class="setting_box_body">
+                <div onclick="closeSetting()">
+                    <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2" aria-hidden="true"></i> Back</div>
+                </div>
+                <div class="setting-body">
+                    <div class="setting-title">
+                        <h4>layout</h4>
+                    </div>
+
+                    <div class="setting-title">
+                        <h4>shop</h4>
+                    </div>
+
+                    <div class="setting-title">
+                        <h4>product</h4>
+                    </div>
+
+                    <div class="setting-title">
+                        <h4>color option</h4>
+                    </div>
+
+                    <div class="setting-title">
+                        <h4>RTL</h4>
+                    </div>
+                    <div class="setting-contant">
+                        <ul class="setting_buttons">
+                            <li class="active" id="ltr_btn"><a href="javascript:void(0)" class="btn setting_btn">LTR</a></li>
+                            <li id="rtl_btn"><a href="javascript:void(0)" class="btn setting_btn">RTL</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- theme setting -->
+        <!-- exit modal popup start-->
+        <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body modal1">
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="modal-bg">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <div class="media">
+                                            <img src="~/Content/images/stop.png" class="stop img-fluid blur-up lazyload mr-3" alt="">
+                                            <div class="media-body text-left align-self-center">
+                                                <div>
+                                                    <h2>wait!</h2>
+                                                    <h4>
+                                                        We want to give you
+                                                        <b>10% discount</b>
+                                                        <span>for your first order</span>
+                                                    </h4>
+                                                    <h5>Make your first order on 10% discount</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add to cart modal popup end-->
+        <!-- facebook chat section start -->
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- Your customer chat code -->
+         
+        <!-- facebook chat section end -->
+        <!-- cart start -->
+        <div class="addcart_btm_popup" id="fixed_cart_icon">
+            <a href="#" class="fixed_cart">
+                <i class="ti-shopping-cart"></i>
+            </a>
+        </div>
+        <!-- cart end -->
+        <!-- tap to top -->
+        <div class="tap-top top-cls">
+            <div>
+                <i class="fa fa-angle-double-up"></i>
+            </div>
+        </div>
+        <!-- tap to top end -->
+        <!-- latest jquery-->
+        <script src="~/Scripts/js/jquery-3.3.1.min.js"></script>
+
+        <!-- fly cart ui jquery-->
+        <script src="~/Scripts/js/jquery-ui.min.js"></script>
+
+        <!-- exitintent jquery-->
+        <script src="~/Scripts/js/jquery.exitintent.js"></script>
+        <script src="~/Scripts/js/exit.js"></script>
+
+        <!-- popper js-->
+        <script src="~/Scripts/js/popper.min.js"></script>
+
+        <!-- slick js-->
+        <script src="~/Scripts/js/slick.js"></script>
+
+        <!-- menu js-->
+        <script src="~/Scripts/js/menu.js"></script>
+
+        <!-- lazyload js-->
+        <script src="~/Scripts/js/lazysizes.min.js"></script>
+
+        <!-- Bootstrap js-->
+        <script src="~/Scripts/js/bootstrap.js"></script>
+
+        <!-- Bootstrap Notification js-->
+        <script src="~/Scripts/js/bootstrap-notify.min.js"></script>
+
+        <!-- Fly cart js-->
+        <script src="~/Scripts/js/fly-cart.js"></script>
+
+        <!-- Theme js-->
+        <script src="~/Scripts/js/script.js"></script>
+
+        <script>
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                if (sessionStorage["PopupShown"] != 'yes') {
+                    $('#exampleModal').modal('show');
+                    e.preventDefault();
+                }
+            });
+            function openSearch() {
+                document.getElementById("search-overlay").style.display = "block";
+            }
+
+
+            function closeSearch() {
+                document.getElementById("search-overlay").style.display = "none";
+            }
+            $("#close").click(function (e) {
+                HideDialog();
+                e.preventDefault();
+                sessionStorage["PopupShown"] = 'yes';
+            });
+            function HideDialog() {
+                $('#exampleModal').modal('hide')
+                $("#dialog").fadeOut(300);
+            }
+        </script>
+</body>
+</html>

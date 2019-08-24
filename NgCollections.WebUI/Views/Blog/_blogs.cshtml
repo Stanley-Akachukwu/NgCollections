@@ -1,0 +1,114 @@
+﻿<!-- breadcrumb start -->
+@model NgCollections.WebUI.Models.BlogIndexViewModel
+@using NgCollections.Domain.Entities
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<section>
+    <div class="text-black-50 fa-bold">
+       
+    </div>
+    <hr />
+</section>*@
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>2019 Ng Collection blogs</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item"><a href="~/Blog/Blogs">blog</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">blogs</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- breadcrumb End -->
+    <!-- section start -->
+    <section class="section-b-space blog-page ratio2_3">
+        <div class="container">
+            <div class="row">
+                <!--Blog sidebar start-->
+                <div class="col-xl-3 col-lg-4 col-md-5">
+                    <div class="blog-sidebar">
+                        <div class="theme-card">
+                            <h4>Recent Blog</h4>
+                            <ul class="recent-blog">
+                                @foreach (Blog r in Model.RecentBlogs)
+                                {
+                                    <li>
+                                        <div class="media">
+                                            <img class="img-fluid blur-up lazyload" src="~/Uploads/Blogs/@r.ImageUrl" alt="@r.Title">
+                                            <div class="media-body align-self-center">
+                                                <h6>@r.EntryDate.ToString("dddd, dd MMMM yyyy")</h6>
+                                                @{int h = r.Popularity * r.Id; }
+                                                <p>@h hits</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="theme-card">
+                            <h4>Popular Blog</h4>
+                            <ul class="popular-blog">
+                                @foreach (Blog b in Model.PopularBlogs)
+                                {
+                                    <li>
+                                        <div class="media">
+                                            <div class="blog-date"><span>@b.EntryDate.Month.ToString("00") </span><span>@b.EntryDate.Year.ToString("0000")</span></div>
+                                            <div class="media-body align-self-center">
+                                                <h6>@b.Title</h6>
+                                                <p>@{int h = b.Popularity * b.Id; } @h hits</p>
+                                            </div>
+                                        </div>
+                                        <p>it look like readable English. Many desktop publishing text.</p>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--Blog sidebar start-->
+                <!--Blog List start-->
+                <div class="col-xl-9 col-lg-8 col-md-7 order-sec">
+                    @foreach (Blog blog in Model.IndexBlogs)
+                    {
+                        <div class="row blog-media">
+                            <div class="col-xl-6">
+                                <div class="blog-left">
+                                    <a href="#"><img src="@Url.Action("GetBlogImage", "Blog",new {blog.Id })" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="blog-right">
+                                    <div>
+                                        <h6>@blog.EntryDate.ToString("dddd, dd MMMM yyyy")</h6>
+                                        <a href="~/Blog/BlogDetails/@blog.Id"><h4>@blog.Title.</h4></a>
+                                        <ul class="post-social">
+                                            <li>Posted By : @blog.Author</li>
+                                            <li><i class="fa fa-heart"></i> @{int h = blog.Popularity * blog.Id; } @h Hits</li>
+                                            <li><i class="fa fa-comments"></i> @blog.NumberOfComments</li>
+                                        </ul>
+                                        <p>Consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!--Blog List start-->
+            </div>
+        </div>
+    </section>
+    <!-- Section ends -->
+    <!-- footer start -->
+    <footer class="footer-light"></footer>

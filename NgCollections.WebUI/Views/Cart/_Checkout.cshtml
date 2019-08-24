@@ -1,0 +1,149 @@
+﻿@model NgCollections.Domain.Entities.ShippingDetails
+@{
+    ViewBag.Title = "Details Page";
+    Layout = "~/Views/Shared/_productDetailsLayout.cshtml";
+}
+<style>
+    input::-webkit-input-placeholder {
+        color: #666 !important;
+        font-size: 9px;
+        font-style: italic;
+    }
+
+    input:-moz-placeholder { /* Firefox 18- */
+        color: #666 !important;
+        font-size: 9px;
+        font-style: italic;
+    }
+
+    input::-moz-placeholder { /* Firefox 19+ */
+        color: #666 !important;
+        font-size: 9px;
+        font-style: italic;
+    }
+
+    input:-ms-input-placeholder {
+        color: #666 !important;
+        font-size: 9px;
+        font-style: italic;
+    }
+</style>
+<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>Check-out</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Check-out</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+<!-- section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="checkout-page">
+            <div class="checkout-form">
+
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 col-xs-12">
+                        <div class="checkout-title">
+                            <h3>Billing Details</h3>
+                        </div>
+                        @using (Html.BeginForm("Checkout", "Cart", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary()
+                        <div class="row check-out">
+                            @Html.HiddenFor(m => m.Id)
+                            @foreach (var property in ViewData.ModelMetadata.Properties)
+                            {
+                                switch (property.PropertyName)
+                                {
+                                    case "Id":
+                                    case "Cart":
+                                        break;
+                                    default:
+                                        if (property.PropertyName == "Email")
+                                        {
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control", placeholder = "denmarkstan@yahoo.com", type = "email" })
+                                                @Html.ValidationMessage(property.PropertyName)
+                                            </div>
+                                        }
+                                        else if (property.PropertyName == "PhoneNumber")
+                                        {
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control", placeholder = "+1238033208157", type = "phone" })
+                                                @Html.ValidationMessage(property.PropertyName)
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control", placeholder = property.PropertyName })
+                                                @Html.ValidationMessage(property.PropertyName)
+                                            </div>
+                                        }
+
+                                        break;
+                                }
+                            }
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <input type="submit" class="btn btn-success solid" value="Submit" />
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                    <div class="col-lg-6 col-sm-12 col-xs-12">
+                        <div class="checkout-details">
+                            <div class="order-box">
+                                <div class="title-box">
+                                    <div>Product <span>Total</span></div>
+                                </div>
+                                <ul class="qty">
+                                    @foreach (var line in Model.Cart.Lines)
+                                    {
+                                        <li>@line.Product.Name × @line.Quantity <span>₦@((line.Quantity * line.Product.Price))</span></li>
+                                    }
+
+                                </ul>
+                                <ul class="sub-total">
+                                    <li>
+                                        Shipping
+                                        <div class="shipping">
+                                            <div class="shopping-option">
+                                                <input type="checkbox" name="local-pickup" id="local-pickup" Checked="checked">
+                                                <label for="local-pickup">Way Bill</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>Way Bill (cost) <span class="count">₦2500.00</span></li>
+
+                                </ul>
+                                <ul class="total">
+                                    <li>Total <span class="count">₦@Model.Cart.ComputeCheckoutTotalValue()</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section end -->

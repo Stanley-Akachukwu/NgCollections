@@ -1,0 +1,145 @@
+﻿@model NgCollections.WebUI.Models.ProductDetailVM
+
+@{
+    ViewBag.Title = "Details Page";
+    Layout = "~/Views/Shared/_productDetailsLayout.cshtml";
+}
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="product-slick">
+
+                        <div class="img-wrapper">
+                            <div class="back">
+                                <div><img src="~/Uploads/@Model.SelectedProduct.FrontImageUrl" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="product-slick">
+
+                        <div class="img-wrapper">
+                            <div class="front">
+                                <div><img src="~/Uploads/@Model.SelectedProduct.BackImageUrl" alt="" class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 rtl-text">
+                    <div class="product-right">
+                        <h2>@Model.SelectedProduct.Name</h2>
+                        <h4><del>₦@Model.SelectedProduct.Price</del><span>15% off</span></h4>
+                        <h3>(***.**)</h3>
+                        <ul class="color-variant">
+                            available sizes: @Model.SelectedProduct.AvailableSizes
+                        </ul>
+                        <div class="product-description border-product">
+                            <h6 class="product-title size-text">selected size: @Model.SelectedProduct.ProductNumberSize</h6>
+                            <h6 class="product-title">quantity</h6>
+                            <div class="qty-box">
+                                <div class="input-group">
+                                    <span class="input-group-prepend"><button type="button" class="btn quantity-left-minus" data-type="minus" data-field=""><i class="ti-angle-left"></i></button> </span>
+                                    <input type="text" name="quantity" class="form-control input-number" value="1"> <span class="input-group-prepend"><button type="button" class="btn quantity-right-plus" data-type="plus" data-field=""><i class="ti-angle-right"></i></button></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-buttons">
+                            
+                            @using (Html.BeginForm("AddToCart", "Cart"))
+                            {
+                                var productId = @Model.SelectedProduct.ProductID;
+
+                                <div class="pull-right">
+                                    @Html.HiddenFor(x => productId)
+                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                    <input type="submit" class="btn btn-success solid" value="Buy now" />
+                                </div>
+                            }
+
+                        </div>
+                        <div class="border-product">
+                            <h6 class="product-title">product details</h6>
+                            <p>@Model.SelectedProduct.Description</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- related products -->
+<section class="section-b-space pt-0 ratio_asos">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h2>related products</h2>
+            </div>
+            
+        </div>
+        <div class="row search-product">
+            @if (Model.HasEmptyRelatedProducts == true)
+            {
+                foreach (var p in Model.RelatedProducts)
+                {
+                    <div class="col-xl-2 col-md-4 col-sm-6">
+                        <div class="product-box">
+                            <div class="img-wrapper">
+                                <div class="front">
+                                    <a href="~/Product/ProductDetails/@p.ProductID">
+                                        <img src="~/Uploads/@p.FrontImageUrl"
+                                             class="img-thumbnail img-fluid blur-up lazyload bg-img" alt="">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="#">
+                                        <img src="~/Uploads/@p.BackImageUrl"
+                                             class="img-thumbnail img-fluid blur-up lazyload bg-img" alt="">
+                                    </a>
+                                </div>
+                                <div class="cart-info cart-wrap">
+                                    <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button> <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                <a href="~/Product/ProductDetails/@p.ProductID">
+                                    <h6>@p.Name</h6>
+                                </a>
+                                <h4>₦@p.Price</h4>
+                                <ul class="color-variant">
+                                    <li class="bg-light0"></li>
+                                    <li class="bg-light1"></li>
+                                    <li class="bg-light2"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                    <div class="col-xl-2 col-md-4 col-sm-6">
+                        <a href="~/Product/ProductDetails/@Model.RelatedProducts[Model.RelatedProducts.Count - 1].ProductID" class="btn btn-success">View more</a>
+
+                    </div>
+            }
+            else
+            {
+                <div class="col-xl-2 col-md-4 col-sm-6">
+                    <div class=" text-info">
+                        <h3> No related products found for <strong class="text-danger">@Model.SelectedProduct.Name</strong> </h3>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+<!-- related products -->

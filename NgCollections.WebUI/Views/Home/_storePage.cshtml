@@ -1,0 +1,134 @@
+﻿@model NgCollections.WebUI.Models.StoreViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+<!-- Home slider -->
+<!-- collection banner end -->
+<!-- Paragraph-->
+<div class="title1 section">
+    <h4>Strictly Turkey products</h4>
+    <h2 class="title-inner1">Top Ng-collection</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="product-para">
+                <p class="text-center">@Model.Pagewritups.TopNgCollectionText</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Paragraph end -->
+<!-- Product slider -->
+ 
+<section class="section-b-space p-t-0 ratio_asos">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="product-4 product-m no-arrow">
+                    @foreach (var p in Model.TopRowProducts)
+                    {
+                        @Html.Partial("~/Views/Home/_xClusives.cshtml", p)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product slider end -->
+<!-- Parallax banner -->
+<section class="p-0">
+    <div class="full-banner parallax text-center p-left">
+        <img src="~/Uploads/@Model.FashionTrend.FrontImageUrl" alt="" class="bg-img blur-up lazyload">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="banner-contain">
+                        <h2>2019</h2>
+                        <h3>@Model.Pagewritups.FashionTrendsText</h3>  <p class="text-center">@Model.Pagewritups.TopNgCollectionText</p>
+                        <h4>special offer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Parallax banner end -->
+<!-- Tab product -->
+<div class="title1 section-t-space">
+    <h4>Exclusive</h4>
+    <h2 class="title-inner1">@Model.Pagewritups.ExclusiveProductText</h2>
+</div>
+<section class="section-b-space p-t-0 ratio_asos">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="theme-tab">
+                    <ul class="tabs tab-title">
+                        <li class="current"><a href="tab-4">New Products</a></li>
+                        <li class=""><a href="tab-5">Featured Products</a></li>
+                        <li class=""><a href="tab-6">Best Sellers</a></li>
+                    </ul>
+                    <div class="tab-content-cls">
+                        <div id="tab-4" class="tab-content active default">
+                            <div class="no-slider row">
+                                @foreach (var p in Model.ExclusiveRowOne)
+                                {
+                                    @Html.Partial("~/Views/Home/_xClusives.cshtml", p)
+                                }
+                            </div>
+                        </div>
+                        <div id="tab-5" class="tab-content">
+                            <div class="no-slider row">
+                                @foreach (var p in Model.ExclusiveRowTwo)
+                                {
+                                    @Html.Partial("~/Views/Home/_xClusives.cshtml", p)
+                                }
+                            </div>
+                        </div>
+                        <div id="tab-6" class="tab-content">
+                            <div class="no-slider row">
+                                @foreach (var p in Model.ExclusiveRowThree)
+                                {
+                                    @Html.Partial("~/Views/Home/_xClusives.cshtml", p)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tab product end -->
+<!-- service layout -->
+<!-- service layout  end -->
+<!-- blog section -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="title1 section-t-space">
+                <h4>Recent Story</h4>
+                <h2 class="title-inner1">from the blog</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="blog p-t-0 ratio2_3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slide-3 no-arrow">
+                    @foreach (var b in Model.Blogs)
+                    {
+                        @Html.Partial("~/Views/Home/_productBlogs.cshtml", b)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog section end -->
